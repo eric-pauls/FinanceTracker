@@ -38,9 +38,9 @@ const findByCategory = async (filter) => {
     return query.exec()
 }
 
-const replaceCategory = async function (_id, category, total, budget) {
-    const result = await Category.replaceOne({_id:_id}, {category: category, total: total, budget: budget});
-    return result.nmodified;
+const replaceCategory = async function (_id, category, budget) {
+    const result = await Category.replaceOne({_id:_id}, {category: category, budget: budget});
+    return result.nModified;
 }
 
 const deleteCategoryBy_id = async (_id) => {
@@ -80,7 +80,6 @@ const findLineItems = async (filter, projection, limit) => {
 
 const replaceLineItem = async function (_id, date, description, category, amount) {
     const result = await LineItem.replaceOne({_id:_id}, {date: date, description: description, category: category, amount:amount});
-    console.log(result)
     return result.nModified;
 }
 

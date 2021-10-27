@@ -1,16 +1,15 @@
 import React from 'react';
-import {MdEdit} from 'react-icons/md';
+import {MdDeleteForever, MdEdit} from 'react-icons/md';
+import TotalCategories from './TotalCategories';
 
-
-function Category ({lineItem, onDelete, onEdit}) {
+function Category ({category, onDelete, onEdit}) {
     return (
         <tr>
-            <td>{lineItem.date}</td>
-            <td>{lineItem.description}</td>
-            <td>{lineItem.category}</td>
-            <td>{lineItem.amount}</td>
-            <td className="td"><MdEdit onClick={() => onEdit(lineItem)}/></td>
-            <td className="td"><MdDeleteForever onClick={() => onDelete(lineItem._id)}/></td>
+            <td>{category.category}</td>
+            <td><TotalCategories category={category}/></td>
+            <td>{category.budget}</td>
+            <td className="td"><MdEdit onClick={() => onEdit(category)}/></td>
+            <td className="td"><MdDeleteForever onClick={() => onDelete(category._id)}/></td>
         </tr>
     )
 }

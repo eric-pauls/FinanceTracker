@@ -1,7 +1,7 @@
 import React from 'react';
 import Category from './Category';
 
-function CategoryTable ({categories, onEdit}) {
+function CategoryTable ({categories, onDelete, onEdit}) {
     return (
         <table>
             <thead>
@@ -12,7 +12,7 @@ function CategoryTable ({categories, onEdit}) {
                 </tr>
             </thead>
             <tbody>
-            {categories.map((category, i) => <Category lineItem={lineItem}
+            {categories.map((category, i) => <Category category={category}
                     onDelete={onDelete}
                     onEdit={onEdit}
                     key={i} />)}

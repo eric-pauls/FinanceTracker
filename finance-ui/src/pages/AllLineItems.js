@@ -26,6 +26,7 @@ function AllLineItems({setLineItemToEdit}) {
     const loadLineItems = async () => {
         const response = await fetch('/lineItems');
         const data = await response.json();
+        console.log(data)
         setLineItems(data);
     };
         

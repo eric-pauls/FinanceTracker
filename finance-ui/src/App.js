@@ -6,11 +6,14 @@ import AllLineItems from './pages/AllLineItems';
 import BalanceSheet from './pages/BalanceSheet';
 import AddLineItem from './pages/AddLineItem';
 import EditLineItem from './pages/EditLineItem';
+import EditCategory from './pages/EditCategory';
 import ExpenseVisual from './pages/ExpenseVisual';
+import AddCategory from './pages/AddCategory';
 
 
 function App() {
   const [lineItemToEdit, setLineItemToEdit] = useState();
+  const [categoryToEdit, setCategoryToEdit] = useState();
   return (
     <div>
       <Router>
@@ -20,7 +23,7 @@ function App() {
               <HomePage />
             </Route>
             <Route path="/BalanceSheet">
-              <BalanceSheet />
+              <BalanceSheet setCategoryToEdit={setCategoryToEdit}/>
             </Route>
             <Route path="/ExpenseVisual">
                 <ExpenseVisual/>
@@ -33,6 +36,12 @@ function App() {
             </Route>
             <Route path="/EditLineItem">
                 <EditLineItem lineItemToEdit={lineItemToEdit}/>
+            </Route>
+            <Route path="/EditCategory">
+                <EditCategory categoryToEdit={categoryToEdit}/>
+            </Route>
+            <Route path="/AddCategory">
+                <AddCategory/>
             </Route>
           </Switch>
         </div>
