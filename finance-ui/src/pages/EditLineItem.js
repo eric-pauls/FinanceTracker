@@ -24,7 +24,7 @@ const EditLineItem = ({lineItemToEdit}) => {
         }else{
             alert(`Failed to edit line item, status code = ${response.status}`);
         }
-        history.push('/');
+        history.push('/AllLineItems');
     };
 
     let formAction = (event) => {
@@ -67,7 +67,7 @@ const EditLineItem = ({lineItemToEdit}) => {
                             value={amount}
                             onChange={e => setAmount(e.target.value)}/>
                 </div>
-                <button onClick={editLineItem}>Edit Line Item</button>
+                <button onClick={editLineItem}>Save</button>
             </form>
         </div>
     )

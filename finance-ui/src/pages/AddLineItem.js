@@ -25,7 +25,7 @@ const AddLineItem = () => {
         }else{
             alert(`Failed to add line item, status code = ${response.status}`);
         }
-        history.push('/');
+        history.push('/AllLineItems');
     };
 
     let formAction = (event) => {

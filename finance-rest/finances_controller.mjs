@@ -36,10 +36,12 @@ app.get('/lineItems', (req, res) => {
     });
 });
 
+
 //update line item
 app.put('/lineItems/:_id', (req, res) => {
     lineItems.replaceLineItem(req.params._id, req.body.date, req.body.description, req.body.category, req.body.amount)
         .then(numUpdated => {
+            console.log(numUpdated)
             if (numUpdated === 1) {
                 res.json({_id: req.params._id, date: req.body.date, description: req.body.description, category: req.body.category, amount: req.body.amount})
             } else{
@@ -52,6 +54,7 @@ app.put('/lineItems/:_id', (req, res) => {
         });
 });
 
+
 //delete line item belonging to the input ID
 app.delete("/lineItems/:_id", (req, res) =>{
     lineItems.deleteBy_id(req.params._id)
@@ -63,6 +66,8 @@ app.delete("/lineItems/:_id", (req, res) =>{
             }
         });
 });
+
+
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}...`);

@@ -37,7 +37,7 @@ function AllLineItems({setLineItemToEdit}) {
         <div>
             <h1>All My Line Items</h1>
             <LineItemTable lineItems={lineItems} onDelete={onDelete} onEdit={onEdit}></LineItemTable>
-            <Link to='/AddLineItem'>Add Line Item</Link>
+            <Link to='/AddLineItem'>Add Line Item</Link><br/>
             <Link to='/'>Return to Home</Link>
         </div>
     )
