@@ -1,24 +1,45 @@
-import React from 'react';
-import Category from './Category';
+import { useState, useEffect } from "react";
+import Category from "./Category";
 
-function CategoryTable ({categories, onDelete, onEdit}) {
-    return (
-        <table>
-            <thead>
-                <tr>
-                    <th>Category</th>
-                    <th>Total Amount</th>
-                    <th>Expected Tearly Total</th>
-                </tr>
-            </thead>
-            <tbody>
-            {categories.map((category, i) => <Category category={category}
-                    onDelete={onDelete}
-                    onEdit={onEdit}
-                    key={i} />)}
-            </tbody>
-        </table>
-    )
+function CategoryTable({ categories, onDelete, onEdit }) {
+  const [entries, setEntries] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/lineItems")
+      .then((response) => response.json())
+      .then((data) => setEntries(data));
+  }, []);
+
+  const sumForCategory = (category) => {
+    if (!entries){return(null)}
+    return entries.reduce((sum, entry) => {
+      if (entry.category !== category) return sum;
+      return sum + entry.amount;
+    }, 0);
+  }; 
+
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Total Amount</th>
+          <th>Expected Tearly Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {categories.map((category, i) => (
+          <Category
+            category={category}
+            sum={sumForCategory(category.category)}
+            onDelete={onDelete}
+            onEdit={onEdit}
+            key={i}
+          />
+        ))}
+      </tbody>
+    </table>
+  );
 }
 
-export default CategoryTable
+export default CategoryTable;

@@ -10,7 +10,7 @@ function AllLineItems({setLineItemToEdit}) {
     const history = useHistory()
 
     const onDelete = async _id => {
-        const response = await fetch(`/lineItems/${_id}`, {method: 'DELETE'});
+        const response = await fetch(`http://localhost:8080/lineItems/${_id}`, {method: 'DELETE'});
         if (response.status === 204){
             setLineItems(lineItems.filter(e => e._id !== _id));
         }else {
@@ -24,9 +24,8 @@ function AllLineItems({setLineItemToEdit}) {
     };
 
     const loadLineItems = async () => {
-        const response = await fetch('/lineItems');
+        const response = await fetch('http://localhost:8080/lineItems');
         const data = await response.json();
-        console.log(data)
         setLineItems(data);
     };
         

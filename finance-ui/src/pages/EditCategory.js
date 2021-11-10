@@ -10,7 +10,7 @@ const EditCategory = ({categoryToEdit}) => {
 
     const editCategory = async () => {
         const editedCategory = {category, budget};
-        const response = await fetch(`categories/${categoryToEdit._id}`, {
+        const response = await fetch(`http://localhost:8080/categories/${categoryToEdit._id}`, {
             method: 'PUT',
             body: JSON.stringify(editedCategory),
             headers: {

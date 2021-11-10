@@ -10,7 +10,7 @@ const AddCategory = () => {
 
     const addCategory = async () => {
         const newCategory = {category, budget};
-        const response = await fetch('/categories', {
+        const response = await fetch('http://localhost:8080/categories', {
             method: 'POST',
             body: JSON.stringify(newCategory),
             headers: {

@@ -1,22 +1,25 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 
-function TotalCategories (category) {
-    const total = useState(0)
+const TotalCategories = async (category) => {
+    const [entries, setEntries] = useState(null);
 
-    const loadLineItems = async () => {
-        const response = await fetch('/LineItems');
-        const data = await response.json();
-
-    }
 
     useEffect(() => {
-        loadLineItems();
+        fetch('http://localhost:8080/lineItems').then(response => response.json()).then(data => setEntries(data));
     }, []);
 
-    return (
-        <h1>hello</h1>
-    )
+    // let sum = 0
+    // for (const lineItem in entries) {
+    //     if (entries[lineItem]['category'] === category) {
+    //         sum += entries[lineItem]['amount']
+    //     }
+    // }
+
+    console.log(entries);
+    
+    return <h1>hello</h1>;
+
 }
 
 export default TotalCategories
