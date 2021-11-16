@@ -3,15 +3,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Pie from "../components/Pie.js";
 
-const testData = [
-  { category: "Income", total: 5000 },
-  { category: "Assets", total: 500 },
-  { category: "Miscellaneous", total: 40 },
-  { category: "Entertainment", total: 250 },
-  { category: "Home", total: 250 },
-  { category: "Personal/Health", total: 400 },
-];
-
 // make 'data' a fetch of all categories
 //modify categories to meet criteria of service
 // make a select that allows user to selct categories they want to exclude
