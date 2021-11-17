@@ -1,12 +1,7 @@
 import React from "react";
 import { useState, useEffect, useCallback } from "react";
 
-/* 
-How to get categories in a seprate dropdown component:
-1. Fetch categories
-2. Save categories in state
-3. Render them in dropdown :)
-*/
+
 function DropDown({category, onCategoryChange}) {
   const [categories, setCategories] = useState(null);
   useEffect(() => {
@@ -33,7 +28,7 @@ function DropDown({category, onCategoryChange}) {
   return (
     <div>
       <label for="category">Category</label>
-      <select id="dropdown" onChange={handleCategoryChange} val={category}>
+      <select onChange={handleCategoryChange} val={category}>
         <option value="">--Please choose an option--</option>
         {check()}
       </select>

@@ -1,4 +1,4 @@
-import mongoose from'mongoose';
+import mongoose from 'mongoose';
 
 mongoose.connect(
     'mongodb://localhost:27017/lineItems',
@@ -15,36 +15,36 @@ mongoose.set('useCreateIndex', true);
 
 //define totals schema
 const categorySchema = mongoose.Schema({
-    category:{type:String, required: true},
-    budget: {type: Number, required: true}
+    category: { type: String, required: true },
+    budget: { type: Number, required: true }
 })
 //compile model from the schema
 const Category = mongoose.model("Category", categorySchema)
 
 const createCategory = async (category, budget) => {
-    const newCategory = new Category({category: category, budget: budget});
+    const newCategory = new Category({ category: category, budget: budget });
     return newCategory.save();
 }
 
 const findCategories = async (filter, projection, limit) => {
-    const query = Category.find(filter) 
-    .select(projection)
-    .limit(limit);
+    const query = Category.find(filter)
+        .select(projection)
+        .limit(limit);
     return query.exec();
 }
 
 const findByCategory = async (filter) => {
-    const query = LineItem.find({category:filter})
+    const query = LineItem.find({ category: filter })
     return query.exec()
 }
 
-const replaceCategory = async function (_id, category, budget) {
-    const result = await Category.replaceOne({_id:_id}, {category: category, budget: budget});
+const replaceCategory = async (_id, category, budget) => {
+    const result = await Category.replaceOne({ _id: _id }, { category: category, budget: budget });
     return result.nModified;
 }
 
 const deleteCategoryBy_id = async (_id) => {
-    const result = await Category.deleteOne({_id:_id});
+    const result = await Category.deleteOne({ _id: _id });
     return result.deletedCount;
 }
 
@@ -52,40 +52,40 @@ const deleteCategoryBy_id = async (_id) => {
 
 //defining line itemschema 
 const lineItemSchema = mongoose.Schema({
-    date: { type: String, required: true},
-    description: { type: String, required: true},
-    category: { type: String, required: true},
-    amount: { type: Number, required: true}
+    date: { type: String, required: true },
+    description: { type: String, required: true },
+    category: { type: String, required: true },
+    amount: { type: Number, required: true }
 });
 
 //compile a model fromm the schema 
 const LineItem = mongoose.model("LineItem", lineItemSchema)
 
 const createLineItem = async (date, description, category, amount) => {
-    const lineItem = new LineItem({date: date, description: description, category: category, amount: amount});
+    const lineItem = new LineItem({ date: date, description: description, category: category, amount: amount });
     return lineItem.save();
 }
 
 const findLineItemBy_id = async (_id) => {
     const query = LineItem.findBy_id(_id);
-    return query.exec(); 
-}
-
-const findLineItems = async (filter, projection, limit) => {
-    const query = LineItem.find(filter) 
-    .select(projection)
-    .limit(limit);
     return query.exec();
 }
 
-const replaceLineItem = async function (_id, date, description, category, amount) {
-    const result = await LineItem.replaceOne({_id:_id}, {date: date, description: description, category: category, amount:amount});
+const findLineItems = async (filter, projection, limit) => {
+    const query = LineItem.find(filter)
+        .select(projection)
+        .limit(limit);
+    return query.exec();
+}
+
+const replaceLineItem = async (_id, date, description, category, amount) => {
+    const result = await LineItem.replaceOne({ _id: _id }, { date: date, description: description, category: category, amount: amount });
     return result.nModified;
 }
 
 const deleteBy_id = async (_id) => {
-    const result = await LineItem.deleteOne({_id:_id});
+    const result = await LineItem.deleteOne({ _id: _id });
     return result.deletedCount;
 }
 
-export { createLineItem, findLineItems, replaceLineItem, deleteBy_id, createCategory, findCategories, replaceCategory, deleteCategoryBy_id, findByCategory};
+export { createLineItem, findLineItems, replaceLineItem, deleteBy_id, createCategory, findCategories, replaceCategory, deleteCategoryBy_id, findByCategory };

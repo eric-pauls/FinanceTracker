@@ -21,21 +21,21 @@ app.post("/categories", (req, res) => {
         })
         .catch(error => {
             console.error(error);
-            res.status(400).json({Error: "Request Failed"});
+            res.status(400).json({ Error: "Request Failed" });
         });
 });
 
 // retrieve categories
 app.get('/categories', (req, res) => {
     let filter = {};
-    lineItems.findCategories(filter, '',  0)
-    .then(lineItems => {
-        res.json(lineItems);
-    })
-    .catch(error => {
-        console.error(error);
-        res.status(400).json({Error: "Request Failed"})
-    });
+    lineItems.findCategories(filter, '', 0)
+        .then(lineItems => {
+            res.json(lineItems);
+        })
+        .catch(error => {
+            console.error(error);
+            res.status(400).json({ Error: "Request Failed" })
+        });
 });
 
 //update category
@@ -43,25 +43,25 @@ app.put('/categories/:_id', (req, res) => {
     lineItems.replaceCategory(req.params._id, req.body.category, req.body.budget)
         .then(numUpdated => {
             if (numUpdated === 1) {
-                res.json({_id: req.params._id, category: req.body.category, budget: req.body.budget})
-            } else{
-                res.status(400).json({Error: "Request failed"})
+                res.json({ _id: req.params._id, category: req.body.category, budget: req.body.budget })
+            } else {
+                res.status(400).json({ Error: "Request failed" })
             }
         })
         .catch(error => {
             console.error(error);
-            res.status(400).json({Error: "Request Failed"})
+            res.status(400).json({ Error: "Request Failed" })
         });
 });
 
 //delete category belonging to the input ID
-app.delete("/categories/:_id", (req, res) =>{
+app.delete("/categories/:_id", (req, res) => {
     lineItems.deleteCategoryBy_id(req.params._id)
         .then(deletedCount => {
-            if (deletedCount ===1) {
+            if (deletedCount === 1) {
                 res.status(204).send();
-            } else{
-                res.status(404).json({Error: "Request Failed"});
+            } else {
+                res.status(404).json({ Error: "Request Failed" });
             }
         });
 });
@@ -78,21 +78,21 @@ app.post("/lineItems", (req, res) => {
         })
         .catch(error => {
             console.error(error);
-            res.status(400).json({Error: "Request Failed"});
+            res.status(400).json({ Error: "Request Failed" });
         });
 });
 
 // retrieve line items
 app.get('/lineItems', (req, res) => {
     let filter = {};
-    lineItems.findLineItems(filter, '',  0)
-    .then(lineItems => {
-        res.json(lineItems);
-    })
-    .catch(error => {
-        console.error(error);
-        res.status(400).json({Error: "Request Failed"})
-    });
+    lineItems.findLineItems(filter, '', 0)
+        .then(lineItems => {
+            res.json(lineItems);
+        })
+        .catch(error => {
+            console.error(error);
+            res.status(400).json({ Error: "Request Failed" })
+        });
 });
 
 
@@ -102,26 +102,26 @@ app.put('/lineItems/:_id', (req, res) => {
         .then(numUpdated => {
             console.log(numUpdated)
             if (numUpdated === 1) {
-                res.json({_id: req.params._id, date: req.body.date, description: req.body.description, category: req.body.category, amount: req.body.amount})
-            } else{
-                res.status(400).json({Error: "Request failed"})
+                res.json({ _id: req.params._id, date: req.body.date, description: req.body.description, category: req.body.category, amount: req.body.amount })
+            } else {
+                res.status(400).json({ Error: "Request failed" })
             }
         })
         .catch(error => {
             console.error(error);
-            res.status(400).json({Error: "Request Failed"})
+            res.status(400).json({ Error: "Request Failed" })
         });
 });
 
 
 //delete line item belonging to the input ID
-app.delete("/lineItems/:_id", (req, res) =>{
+app.delete("/lineItems/:_id", (req, res) => {
     lineItems.deleteBy_id(req.params._id)
         .then(deletedCount => {
-            if (deletedCount ===1) {
+            if (deletedCount === 1) {
                 res.status(204).send();
-            } else{
-                res.status(404).json({Error: "Request Failed"});
+            } else {
+                res.status(404).json({ Error: "Request Failed" });
             }
         });
 });
