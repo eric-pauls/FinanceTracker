@@ -1,17 +1,11 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import DropDown from '../components/CategoryDropDown';
+import Form from 'react-bootstrap/Form'
 
 const today = new Date();
 const currentDate =
   today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-
-/* 
-How to get categories in a seprate dropdown component:
-1. Fetch categories
-2. Save categories in state
-3. Render them in dropdown :)
-*/
 
 const AddLineItem = () => {
   const [date, setDate] = useState(currentDate);
@@ -20,7 +14,7 @@ const AddLineItem = () => {
   const [amount, setAmount] = useState("");
   const history = useHistory();
 
-  
+
 
   const addLineItem = async () => {
     const newLineItem = { date, description, category, amount };
@@ -45,7 +39,7 @@ const AddLineItem = () => {
 
   return (
     <div>
-      <form onSubmit={formAction}>
+      <Form onSubmit={formAction}>
         <h1>Add Line Item</h1>
         <div>
           <label for="date">Date:</label>
@@ -64,7 +58,7 @@ const AddLineItem = () => {
           />
         </div>
         <div>
-          <DropDown category={category} onCategoryChange={setCategory}/>
+          <DropDown category={category} onCategoryChange={setCategory} />
         </div>
         <div>
           <label for="amount">Amount</label>
@@ -77,7 +71,8 @@ const AddLineItem = () => {
           />
         </div>
         <button onClick={addLineItem}>Add Line Item</button>
-      </form>
+        <button onClick={() => history.push("/AllLineItems")}>Cancel</button>
+      </Form>
     </div>
   );
 };

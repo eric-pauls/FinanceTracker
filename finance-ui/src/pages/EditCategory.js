@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
+import Form from 'react-bootstrap/Form'
 
 
 const EditCategory = ({categoryToEdit}) => {
+    
     const [category, setCategory] = useState(categoryToEdit.category);
     const [budget, setBudget] = useState(categoryToEdit.budget);
     
@@ -31,7 +33,7 @@ const EditCategory = ({categoryToEdit}) => {
 
     return (
         <div>
-            <form onSubmit={formAction}>
+            <Form onSubmit={formAction}>
                 <h1>Edit Category</h1>
                 <div>
                     <label for='category'>Category Name:</label>
@@ -48,7 +50,8 @@ const EditCategory = ({categoryToEdit}) => {
                         onChange={e => setBudget(e.target.value)}/>
                 </div>
                 <button onClick={editCategory}>Save</button>
-            </form>
+                <button onClick={() => history.push('/BalanceSheet')}>Cancel</button>
+            </Form>
         </div>
     )
 }

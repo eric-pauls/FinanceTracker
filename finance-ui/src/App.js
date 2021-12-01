@@ -8,6 +8,7 @@ import EditLineItem from './pages/EditLineItem';
 import EditCategory from './pages/EditCategory';
 import ExpenseVisual from './pages/ExpenseVisual';
 import AddCategory from './pages/AddCategory';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {

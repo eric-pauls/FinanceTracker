@@ -1,11 +1,16 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
+import Form from 'react-bootstrap/Form'
 
 
 const AddCategory = () => {
     const [category, setCategory] = useState('');
     const [budget, setBudget] = useState('');
     const history = useHistory();
+
+    const cancel = () => {
+        history.push('/BalanceSheet')
+    }
 
 
     const addCategory = async () => {
@@ -18,9 +23,9 @@ const AddCategory = () => {
             },
         });
         if(response.status === 201){
-            alert('Line item added successfully');
+            alert('Category added successfully');
         }else{
-            alert(`Failed to add line item, status code = ${response.status}`);
+            alert(`Failed to add category, status code = ${response.status}`);
         }
         history.push('/BalanceSheet');
     };
@@ -31,7 +36,7 @@ const AddCategory = () => {
 
     return (
         <div>
-            <form onSubmit={formAction}>
+            <Form onSubmit={formAction}>
                 <h1>Add Category</h1>
                 <div>
                     <label for='category'>Category Name:</label>
@@ -48,7 +53,8 @@ const AddCategory = () => {
                         onChange={e => setBudget(e.target.value)} />    
                 </div>
                 <button onClick={addCategory}>Add Category</button>
-            </form>
+                <button onClick={cancel}>Cancel</button>
+            </Form>
         </div>
     )
 }

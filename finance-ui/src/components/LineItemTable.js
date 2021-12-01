@@ -1,9 +1,10 @@
 import React from "react";
 import LineItem from "./LineItem";
+import Table from 'react-bootstrap/Table'
 
 function LineItemTable({ lineItems, onDelete, onEdit }) {
   return (
-    <table>
+    <Table striped bordered hover >
       <thead>
         <tr>
           <th>Date</th>
@@ -24,7 +25,7 @@ function LineItemTable({ lineItems, onDelete, onEdit }) {
           />
         ))}
       </tbody>
-    </table>
+    </Table>
   );
 }
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import DropDown from '../components/CategoryDropDown';
+import Form from 'react-bootstrap/Form'
 
 const EditLineItem = ({ lineItemToEdit }) => {
   const [date, setDate] = useState(lineItemToEdit.date);
@@ -36,7 +37,7 @@ const EditLineItem = ({ lineItemToEdit }) => {
 
   return (
     <div>
-      <form onSubmit={formAction}>
+      <Form onSubmit={formAction}>
         <h1>Edit Line Item</h1>
         <div>
           <label for="date">Date:</label>
@@ -68,9 +69,10 @@ const EditLineItem = ({ lineItemToEdit }) => {
           />
         </div>
         <button onClick={editLineItem}>Save</button>
-      </form>
+        <button onClick={() => history.push('/AllLineItems')}>Cancel</button>
+      </Form>
     </div>
   );
 };
 
-export default EditLineItem;
+export default EditLineItem

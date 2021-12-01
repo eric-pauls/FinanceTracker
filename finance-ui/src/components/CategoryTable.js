@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import Category from "./Category";
+import Table from 'react-bootstrap/Table'
+
 
 function CategoryTable({ categories, onDelete, onEdit }) {
   const [entries, setEntries] = useState(null);
@@ -19,7 +21,7 @@ function CategoryTable({ categories, onDelete, onEdit }) {
   }; 
 
   return (
-    <table>
+    <Table striped bordered hover >
       <thead>
         <tr>
           <th>Category</th>
@@ -38,7 +40,7 @@ function CategoryTable({ categories, onDelete, onEdit }) {
           />
         ))}
       </tbody>
-    </table>
+    </Table>
   );
 }
 
